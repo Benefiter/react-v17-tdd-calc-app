@@ -1,0 +1,25 @@
+.title {
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+.calc-container {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(4, 50px);
+    grid-template-rows: minmax(100px, auto) repeat(5, 50px);
+}
+
+  
+.span-two {
+    grid-column: span 2;
+  }
+
+.center-text {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display:flex;
+}
+  

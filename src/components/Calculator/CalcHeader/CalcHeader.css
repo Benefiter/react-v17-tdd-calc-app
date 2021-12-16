@@ -1,0 +1,12 @@
+
+.calc-header {
+    grid-column: 1 / -1;
+    background-color: rgba(0, 46, 44, 0.75);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+  }

@@ -1,6 +1,8 @@
+import './CalculatorButton.css'
+
 const CalculatorButton = ({ text, click }) => {
   return (
-      <div id={`calcbutton${text}`} onClick={() => click(text)}>
+      <div className="calc-button" id={`calcbutton${text}`} onClick={() => click(text)}>
         {text}
       </div>
   );

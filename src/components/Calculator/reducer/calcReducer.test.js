@@ -303,3 +303,88 @@ it('button sequence "2*3/4=DelDel" should clear operand, prevOperand remains at 
     prevOperand: '1.5',
   });
 });
+
+it('button sequence "2*4=+6" operand=6, prevOperand is "8 +" and operator is +', () => {
+  act(() => {
+    dispatchButton('2');
+    dispatchButton('*');
+    dispatchButton('4');
+    dispatchButton('=');
+    dispatchButton('+');
+    dispatchButton('6');
+    dispatchButton('*');
+  });
+
+  expect(result.current[0]).toEqual({
+    operand: '',
+    operator: '*',
+    prevOperand: '14 *',
+  });
+});
+
+it('button sequence "12+3=" operand="", prevOperand is "15" and operator is ""', () => {
+  act(() => {
+    dispatchButton('1');
+    dispatchButton('2');
+    dispatchButton('+');
+    dispatchButton('3');
+    dispatchButton('=');
+  });
+
+  expect(result.current[0]).toEqual({
+    operand: '',
+    operator: '',
+    prevOperand: '15',
+  });
+});
+
+it('button sequence "12+3==" operand="", prevOperand is "15" and operator is ""', () => {
+  act(() => {
+    dispatchButton('1');
+    dispatchButton('2');
+    dispatchButton('+');
+    dispatchButton('3');
+    dispatchButton('=');
+    dispatchButton('=');
+  });
+
+  expect(result.current[0]).toEqual({
+    operand: '',
+    operator: '',
+    prevOperand: '15',
+  });
+});
+
+it('button sequence "12+3=.89" operand="", prevOperand is "15" and operator is ""', () => {
+  act(() => {
+    dispatchButton('1');
+    dispatchButton('2');
+    dispatchButton('+');
+    dispatchButton('3');
+    dispatchButton('=');
+    dispatchButton('.');
+    dispatchButton('8');
+    dispatchButton('9');
+  });
+
+  expect(result.current[0]).toEqual({
+    operand: '',
+    operator: '',
+    prevOperand: '15',
+  });
+});
+
+it('button sequence "36*=" operand="", prevOperand is "36" and operator is "*"', () => {
+  act(() => {
+    dispatchButton('3');
+    dispatchButton('6');
+    dispatchButton('*');
+    dispatchButton('=');
+  });
+
+  expect(result.current[0]).toEqual({
+    operand: '',
+    operator: '*',
+    prevOperand: '36 *',
+  });
+});

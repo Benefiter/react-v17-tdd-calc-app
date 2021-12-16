@@ -12,7 +12,7 @@ const Sidebar = () => {
     <>
       <div
         className='offcanvas offcanvas-start w-25'
-        tabindex='-1'
+        // tabindex='-1'
         id='offcanvas'
         data-bs-keyboard='false'
         data-bs-backdrop='false'
@@ -52,9 +52,9 @@ const Sidebar = () => {
                 aria-labelledby='dropdown'
               >
                 <li>
-                  <a className='dropdown-item' href='#'>
+                  <div className='dropdown-item' href='#'>
                     Help
-                  </a>
+                  </div>
                 </li>
               </ul>
             </li>

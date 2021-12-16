@@ -4,9 +4,9 @@ export const calcReducer = (state, action) => {
   switch (action.type) {
     case actions.button:
       return handleButton(state, action);
+    default:
+      return state;
   }
-
-  return state;
 };
 
 const handleButton = (state, action) => {
@@ -46,7 +46,9 @@ const handleButton = (state, action) => {
       return {
         ...state,
         operand:
-          action.payload === '.' && state.operand.includes(action.payload)
+          state.operator === '' && state.prevOperand !== ''
+            ? ''
+            : action.payload === '.' && state.operand.includes(action.payload)
             ? state.operand
             : `${state.operand}${action.payload}`,
       };
@@ -55,12 +57,14 @@ const handleButton = (state, action) => {
     case '*':
     case '/':
     case '=': {
-      if (action.payload === '=' && operand != '' && prevOperand === '') {
+      if (
+        action.payload === '=' &&
+        ((operator !== '' && operand === '') || operator === '')
+      ) {
         return state;
       }
-      
 
-      if (operator != '' && operand != '' && prevOperand != '') {
+      if (operator !== '' && operand !== '' && prevOperand !== '') {
         const newState = { ...execute(state) };
         return {
           ...newState,
@@ -69,14 +73,26 @@ const handleButton = (state, action) => {
             action.payload === '='
               ? `${newState.prevOperand}`
               : `${newState.prevOperand} ${action.payload}`,
+          operand: action.payload === '=' ? '' : newState.operand,
         };
       }
 
-      if (operator != '' && operand === '' && prevOperand != '') {
+      if (operator !== '' && operand === '' && prevOperand !== '') {
         return {
           ...state,
           operator: action.payload === '=' ? '' : action.payload,
           prevOperand: `${getPrevOperand(prevOperand)} ${action.payload}`,
+        };
+      }
+
+      if (operator === '' && operand === '' && prevOperand !== '') {
+        return {
+          ...state,
+          operator: action.payload === '=' ? '' : action.payload,
+          prevOperand:
+            action.payload === '='
+              ? `${prevOperand}`
+              : `${prevOperand} ${action.payload}`,
         };
       }
 
@@ -88,6 +104,8 @@ const handleButton = (state, action) => {
         ...updatedState,
       };
     }
+    default:
+      return state;
   }
 };
 
@@ -125,6 +143,6 @@ const execute = state => {
         operand: '',
         prevOperand: `${prevOperand / operand}`,
       };
+    default: return state;
   }
-  return state;
 };

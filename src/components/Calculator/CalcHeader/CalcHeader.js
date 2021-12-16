@@ -1,8 +1,12 @@
+import './CalcHeader.css'
+
 const CalcHeader = ({ operand, prevOperand }) => {
   return (
     <>
-      <div id='prevOperand'>{prevOperand}</div>
-      <div id='operand'>{operand}</div>
+      <div className="calc-header">
+        <div id='prevOperand'>{prevOperand}</div>
+        <div id='operand'>{operand}</div>
+      </div>
     </>
   );
 };
