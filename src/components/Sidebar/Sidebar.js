@@ -4,6 +4,7 @@ import AppointmentsWorkflow from '../Appointment/AppointmentsWorkflow';
 import Calculator from '../Calculator/Calculator';
 import TestPage from '../TestPage/TestPage';
 import { useHistory } from 'react-router-dom';
+import TBD from '../TBD';
 
 const Sidebar = () => {
   const history = useHistory();
@@ -36,7 +37,6 @@ const Sidebar = () => {
             <li className='dropdown'>
               <div
                 onClick={() => history.push('/')}
-                // href='#'
                 className='nav-link dropdown-toggle  text-truncate'
                 id='dropdown'
                 data-bs-toggle='dropdown'
@@ -52,7 +52,10 @@ const Sidebar = () => {
                 aria-labelledby='dropdown'
               >
                 <li>
-                  <div className='dropdown-item' href='#'>
+                  <div
+                    className='dropdown-item'
+                    onClick={() => history.push('/TBD')}
+                  >
                     Help
                   </div>
                 </li>
@@ -61,10 +64,9 @@ const Sidebar = () => {
             <li className='dropdown'>
               <div
                 onClick={() => history.push('/calculator')}
-                href='#'
-                className='nav-link text-truncate'
+                className='nav-link dropdown-toggle  text-truncate'
                 id='dropdown'
-                // data-bs-toggle='dropdown'
+                data-bs-toggle='dropdown'
                 aria-expanded='true'
               >
                 <i className='fs-5 bi-table'></i>
@@ -80,14 +82,20 @@ const Sidebar = () => {
                 aria-labelledby='dropdown'
               >
                 <li>
-                  <a className='dropdown-item' href='#'>
+                  <div
+                    className='dropdown-item'
+                    onClick={() => history.push('/TBD')}
+                  >
                     Clear History
-                  </a>
+                  </div>
                 </li>
                 <li>
-                  <a className='dropdown-item' href='#'>
+                  <div
+                    className='dropdown-item'
+                    onClick={() => history.push('/TBD')}
+                  >
                     Help
-                  </a>
+                  </div>
                 </li>
               </ul>
             </li>
@@ -101,7 +109,6 @@ const Sidebar = () => {
               className='btn float-end'
               data-bs-toggle='offcanvas'
               data-bs-target='#offcanvas'
-              role='button'
             >
               <i
                 className='bi bi-arrow-right-square-fill fs-3'
@@ -113,6 +120,7 @@ const Sidebar = () => {
             <Route exact path='/' component={AppointmentsWorkflow} />
             <Route exact path='/calculator' component={Calculator} />
             <Route exact path='/testpage' component={TestPage} />
+            <Route exact path='/TBD' component={TBD} />
           </div>
         </div>
       </div>

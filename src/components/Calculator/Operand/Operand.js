@@ -1,5 +1,7 @@
+import './Operand.css'
+
 const Operand = ({ value }) => {
-  return <div>{value}</div>;
+  return <div className="operandvalue">{value}</div>;
 };
 
 export default Operand;

@@ -114,3 +114,12 @@ footer {
 .about-content {
   text-align: center;
 }
+
+.tbd {
+  text-align: center;
+}
+
+.goback {
+  padding: 10px;
+  border-radius: 10px 10px 10px 10px;
+}
